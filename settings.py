@@ -5,10 +5,10 @@ class Settings:
 		"""Initialize the game's settings."""
 		
 		#Bullet settings
-		self.bullets_speed = 1.0
+		self.bullet_speed = 1.0
 		self.bullet_width = 3
 		self.bullet_height = 15
-		self.bullet_color = (190, 20, 20)
+		self.bullet_color = (220, 25, 25)
 
 
 		#Screen settings
