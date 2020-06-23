@@ -4,6 +4,8 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
+
 
 class AlienInvasion:
 	"""Overall class to manage game assests and behavior."""
@@ -22,6 +24,9 @@ class AlienInvasion:
 
 		self.ship = Ship(self)
 		self.bullets = pygame.sprite.Group()
+		self.aliens = pygame.sprite.Group()
+
+		self._create_fleet()
 
 	def run_game(self):
 		"""Start the main loop for the game."""
@@ -30,7 +35,6 @@ class AlienInvasion:
 			self.ship.update()
 			self._update_bullets()
 			self._update_screen()
-
 
 	def _check_events(self):
 		"""Respond to keypresses and mouse events."""
@@ -42,7 +46,6 @@ class AlienInvasion:
 
 			elif event.type == pygame.KEYUP:
 				self._check_keyup_events(event)
-
 
 	def _check_keydown_events(self, event):
 		"""Respond to keypresses."""
@@ -77,12 +80,19 @@ class AlienInvasion:
 			if bullet.rect.bottom <= 0:
 				self.bullets.remove(bullet)
 
+	def _create_fleet(self):
+		"""Create the fleet of aliens."""
+		# Make an alien.
+		alien = Alien(self)
+		self.aliens.add(alien)
+
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
 		self.screen.fill(self.settings.bg_color)
 		self.ship.blitme()
 		for bullet in self.bullets.sprites():
 			bullet.draw_bullet( )
+		self.aliens.draw(self.screen)
 
 		pygame.display.flip()
 
