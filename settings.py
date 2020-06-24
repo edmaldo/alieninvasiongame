@@ -5,12 +5,12 @@ class Settings:
 		"""Initialize the game's settings."""
 		
 		#Alien settings
-		self.alien_speed = 1.0
-		self.fleet_drop_speed = 1.0
+		self.alien_speed = 1
+		self.fleet_drop_speed = 7
 		self.fleet_direction = 1
 
 		#Bullet settings
-		self.bullet_speed = 1.0
+		self.bullet_speed = 1.7
 		self.bullet_width = 3
 		self.bullet_height = 15
 		self.bullet_color = (220, 25, 25)
@@ -24,3 +24,4 @@ class Settings:
 
 		# Ship settings
 		self.ship_speed = 1.5
+		self.ship_limit = 3
