@@ -5,7 +5,7 @@ class Settings:
 		"""Initialize the game's settings."""
 		
 		#Bullet settings
-		self.bullet_width = 3
+		self.bullet_width = 10
 		self.bullet_height = 15
 		self.bullet_color = (220, 25, 25)
 		self.bullets_allowed = 2
@@ -24,6 +24,8 @@ class Settings:
 
 		self.speedup_scale = 1.1
 
+		self.score_scale = 1
+
 		self.initialize_dynamic_settings()
 
 	def initialize_dynamic_settings(self):
@@ -33,6 +35,8 @@ class Settings:
 		self.alien_speed = 1.0
 
 		self.fleet_direction = 1
+
+		self.alien_points = 100
 
 
 	def increase_speed(self):
