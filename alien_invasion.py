@@ -1,6 +1,5 @@
 import sys
 from time import sleep
-
 import pygame
 
 from settings import Settings
@@ -25,7 +24,7 @@ class AlienInvasion:
 
 		self.screen =  pygame.display.set_mode(
 			(self.settings.screen_width, self.settings.screen_height))
-		pygame.display.set_caption("Alien Mother Fucking Invasion")
+		pygame.display.set_caption("Alien Invasion Game")
 
 		# Create an instance to store game statistics.
 		self.stats = GameStats(self)
@@ -67,7 +66,6 @@ class AlienInvasion:
 				mouse_pos = pygame.mouse.get_pos()
 				self._check_play_button(mouse_pos)
 
-
 	def _check_play_button(self, mouse_pos):
 		"""Start a new game when player hits 'START'"""
 		button_clicked = self.play_button.rect.collidepoint(mouse_pos)
@@ -92,7 +90,6 @@ class AlienInvasion:
 
 			#Hide the mouse cursor
 			pygame.mouse.set_visible(False)
-
 
 	def _check_keydown_events(self, event):
 		"""Respond to keypresses."""
@@ -129,7 +126,6 @@ class AlienInvasion:
 
 		self._check_bullet_alien_collisions()
 
-
 	def _check_bullet_alien_collisions(self):
 		""" Respond to bullet-alien collusion."""
 		collisions = pygame.sprite.groupcollide(
@@ -149,7 +145,6 @@ class AlienInvasion:
 			#Increase level.
 			self.stats.level += 1
 			self.sb.prep_level()
-
 
 	def _update_aliens(self):
 		""""
@@ -185,8 +180,7 @@ class AlienInvasion:
 		else:
 			self.stats.game_active = False
 			pygame.mouse.set_visible(True)
-	
-	
+
 	def _check_aliens_bottom(self):
 		"""Check if any alien have reached the bottom of the screen."""
 		screen_rect = self.screen.get_rect()
@@ -195,7 +189,6 @@ class AlienInvasion:
 				# Treat this the same as if the ship got hit.
 				self._ship_hit()
 				break
-
 
 	def _create_fleet(self):
 		"""Create the fleet of aliens."""
@@ -215,7 +208,6 @@ class AlienInvasion:
 			for alien_number in range(number_aliens_x):
 				self._create_alien(alien_number, row_number)
 
-
 	def _create_alien(self, alien_number, row_number):
 		"""Create an alien and place it in the row."""
 		alien = Alien(self)
@@ -225,7 +217,6 @@ class AlienInvasion:
 		alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
 		self.aliens.add(alien)
 
-
 	def _check_fleet_edges(self):
 		"""Respond appropriately if any aliens have reached an edge."""
 		for alien in self.aliens.sprites():
@@ -233,13 +224,11 @@ class AlienInvasion:
 				self._change_fleet_direction()
 				break
 
-
 	def _change_fleet_direction(self):
 		"""Drop the entire fleet and change the fleet's direction."""
 		for alien in self.aliens.sprites():
 			alien.rect.y += self.settings.fleet_drop_speed
 		self.settings.fleet_direction *= -1
-
 
 	def _update_screen(self):
 		"""Update images on the screen, and flip to the new screen."""
@@ -257,7 +246,7 @@ class AlienInvasion:
 
 		pygame.display.flip()
 
+
 if __name__ == '__main__':
-	# Make a game instance, and run the game.
 	ai = AlienInvasion()
 	ai.run_game()

@@ -10,7 +10,6 @@ class Settings:
 		self.bullet_color = (220, 25, 25)
 		self.bullets_allowed = 2
 
-
 		#Screen settings
 		self.screen_width = 1200
 		self.screen_height = 800
@@ -37,7 +36,6 @@ class Settings:
 		self.fleet_direction = 1
 
 		self.alien_points = 100
-
 
 	def increase_speed(self):
 		"""increase speed settings."""
